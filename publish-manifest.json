@@ -1,6 +1,6 @@
 {
   "version": "v0.6.1",
-  "sourceCommit": "06ca80b989a5ea13ae0f891c67e1799795d817f6",
+  "sourceCommit": "c2b50f7e147aec712a5df52f72afd49b3a2d6089",
   "files": {
     "index.html": "0207d6edda209de8cb10e32a77f8e729b2192bb9c1b37c52f1a47f2e523781df",
     "play.html": "aba886f9a8ef867c559c314f8b9ef06dc60959af57426e3a89b02696e849ab98",
@@ -32,12 +32,37 @@
     "games/ascent/v0.6.1/licenses/LICENSE_CODE_MIT.txt": "3ba543249fe88cd22862ade09aa55a2ecb562209067664fd05d31f723e71ba9d",
     "games/ascent/v0.6.1/licenses/ASSET_LICENSES.md": "4954956dfb87d79470b1ce2eadb802d456a7807a91cb59d504b3aefae7144b15",
     "LICENSE": "3ba543249fe88cd22862ade09aa55a2ecb562209067664fd05d31f723e71ba9d",
-    "games.json": "1f057c2c04345d7f674ef8de354aa6f2e3b8bcffc1bd5df66dae05a29e82008c",
+    "games.json": "cc7cfb88f5dc1e7900cfcca1192ac31515ce04074f4f7676627803a06c844cbf",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     ".gitignore": "2bdfdb216230559f36faf46907142b8afd478401150f810e1ddaf9a4fdcc656c",
     ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
     "README.md": "0b36ae446caac903f3d29c2822c7c7d0157cc74f6a4ab6042350ea0cef755c3d",
-    "PUBLISHING.md": "942ad35b7f41f8ad2b8409ea36c74a8ff2667abf5e49ab88874bed75c0f01c09"
+    "PUBLISHING.md": "942ad35b7f41f8ad2b8409ea36c74a8ff2667abf5e49ab88874bed75c0f01c09",
+    "games/ascent/v0.6.2/index.html": "0d3e402433d0044489be5e9f8a08d11db0b4d51f52a5de9a21ed0d9da45bdd5c",
+    "games/ascent/v0.6.2/camera.js": "af6ad1bc7cefcaa1225f643851394aa7ee3c18f509898f08901dec5a2f855994",
+    "games/ascent/v0.6.2/combat.js": "2e7e7c46dcb7a3a675192b424aac4b630e91a31d9cbd912fd7822e94f2e57cb6",
+    "games/ascent/v0.6.2/config.js": "0f39f1764dd698f029e9dc4c81bfc3cfbb02f7b9011eb88431b71fbe78a5ab40",
+    "games/ascent/v0.6.2/economy.js": "afe3ef4b8ff701731101a55164d7a9823287502541ed177b5104d2ac1068cd75",
+    "games/ascent/v0.6.2/fog.js": "5a0dc3bf24253e9e35cb219eda5305635f798ee7513caa0506e3a23fa8ffb437",
+    "games/ascent/v0.6.2/gl.js": "ea522d858d9515b2b15db0f0335a0fdf2cf5e9def0a464e6469fb6ce2223a2e7",
+    "games/ascent/v0.6.2/inventory.js": "8c6f0b0751ff07e4ff3c5488894c08b46761d495ab4931040f61fef72f6f1b72",
+    "games/ascent/v0.6.2/landmarks.js": "da0de744642f50a4eb26fd243fdd4b7e4f235e930a0fb33620a2d8eaabf8c794",
+    "games/ascent/v0.6.2/main.js": "d4a13a5f438efcdfe4426197485bf4587b46fc78a2e0f0f1e7baefd8682fce60",
+    "games/ascent/v0.6.2/navigation.js": "4b550b1008e629cd3bdde6c16f8f65b3f3c322bc0b772d906a424d904ea8cb67",
+    "games/ascent/v0.6.2/panels.js": "05218f7677cb4942ac3c79477b5c376c415169b50c53d3fe46090980abe7160c",
+    "games/ascent/v0.6.2/perception.js": "f6f29a158ce7b4694e6ada26115a68e34a604402e03d7c379795292565044a05",
+    "games/ascent/v0.6.2/pressure.js": "7615ff3aa8752ca4fb5b13e301596dba5009beb6abf46c4078ed3f24030fbf47",
+    "games/ascent/v0.6.2/rules.js": "708bcd6db1db3ed0973c7bad90372f5993279ab095a620a5d37c47bf366f09b8",
+    "games/ascent/v0.6.2/squad.js": "af112d5ee2b95026dc07ac4808099b0c74259f9ccbb52948c0c5932599be7b72",
+    "games/ascent/v0.6.2/timing.js": "1e1a118838a561c13c99fac18631cffc09d5d151ce21b528ec21ae25d700ffa2",
+    "games/ascent/v0.6.2/transit.js": "f553380e5d6e83df463cd781374c87e4ca9a1046bca8737579131aefe0775d98",
+    "games/ascent/v0.6.2/trials.js": "4bb54ef489b36eeb408bddff4a95d46a385e9cc9edc62f1ed2d794160de166bd",
+    "games/ascent/v0.6.2/world.js": "53408ca26193f7941f646975c38ee2f7f8e55dbb157443c87c2f05e2bb34a0a2",
+    "games/ascent/v0.6.2/loot.css": "1819919b147cd37504763804ee946356d14c0d0c59deb0f2e1819cd1cf1f768f",
+    "games/ascent/v0.6.2/style.css": "a5f97f78bbda670be693f894aaf723fe242dcf8127e327389b8e23fb8ff8046e",
+    "games/ascent/v0.6.2/licenses/LICENSE_CODE_MIT.txt": "3ba543249fe88cd22862ade09aa55a2ecb562209067664fd05d31f723e71ba9d",
+    "games/ascent/v0.6.2/licenses/ASSET_LICENSES.md": "4954956dfb87d79470b1ce2eadb802d456a7807a91cb59d504b3aefae7144b15",
+    "covers/ascent/v0.6.2/ascent-v0.6.1.png": "d753abe569429e3402011187467277433eb0e7fc9d051ee567e4efe143f36aed"
   },
   "releases": {
     "ascent": {
@@ -69,6 +94,36 @@
           "games/ascent/v0.6.1/licenses/LICENSE_CODE_MIT.txt": "3ba543249fe88cd22862ade09aa55a2ecb562209067664fd05d31f723e71ba9d",
           "games/ascent/v0.6.1/licenses/ASSET_LICENSES.md": "4954956dfb87d79470b1ce2eadb802d456a7807a91cb59d504b3aefae7144b15",
           "covers/ascent-v0.6.1.png": "d753abe569429e3402011187467277433eb0e7fc9d051ee567e4efe143f36aed"
+        }
+      },
+      "v0.6.2": {
+        "sourceCommit": "c2b50f7e147aec712a5df52f72afd49b3a2d6089",
+        "files": {
+          "games/ascent/v0.6.2/index.html": "0d3e402433d0044489be5e9f8a08d11db0b4d51f52a5de9a21ed0d9da45bdd5c",
+          "games/ascent/v0.6.2/camera.js": "af6ad1bc7cefcaa1225f643851394aa7ee3c18f509898f08901dec5a2f855994",
+          "games/ascent/v0.6.2/combat.js": "2e7e7c46dcb7a3a675192b424aac4b630e91a31d9cbd912fd7822e94f2e57cb6",
+          "games/ascent/v0.6.2/config.js": "0f39f1764dd698f029e9dc4c81bfc3cfbb02f7b9011eb88431b71fbe78a5ab40",
+          "games/ascent/v0.6.2/economy.js": "afe3ef4b8ff701731101a55164d7a9823287502541ed177b5104d2ac1068cd75",
+          "games/ascent/v0.6.2/fog.js": "5a0dc3bf24253e9e35cb219eda5305635f798ee7513caa0506e3a23fa8ffb437",
+          "games/ascent/v0.6.2/gl.js": "ea522d858d9515b2b15db0f0335a0fdf2cf5e9def0a464e6469fb6ce2223a2e7",
+          "games/ascent/v0.6.2/inventory.js": "8c6f0b0751ff07e4ff3c5488894c08b46761d495ab4931040f61fef72f6f1b72",
+          "games/ascent/v0.6.2/landmarks.js": "da0de744642f50a4eb26fd243fdd4b7e4f235e930a0fb33620a2d8eaabf8c794",
+          "games/ascent/v0.6.2/main.js": "d4a13a5f438efcdfe4426197485bf4587b46fc78a2e0f0f1e7baefd8682fce60",
+          "games/ascent/v0.6.2/navigation.js": "4b550b1008e629cd3bdde6c16f8f65b3f3c322bc0b772d906a424d904ea8cb67",
+          "games/ascent/v0.6.2/panels.js": "05218f7677cb4942ac3c79477b5c376c415169b50c53d3fe46090980abe7160c",
+          "games/ascent/v0.6.2/perception.js": "f6f29a158ce7b4694e6ada26115a68e34a604402e03d7c379795292565044a05",
+          "games/ascent/v0.6.2/pressure.js": "7615ff3aa8752ca4fb5b13e301596dba5009beb6abf46c4078ed3f24030fbf47",
+          "games/ascent/v0.6.2/rules.js": "708bcd6db1db3ed0973c7bad90372f5993279ab095a620a5d37c47bf366f09b8",
+          "games/ascent/v0.6.2/squad.js": "af112d5ee2b95026dc07ac4808099b0c74259f9ccbb52948c0c5932599be7b72",
+          "games/ascent/v0.6.2/timing.js": "1e1a118838a561c13c99fac18631cffc09d5d151ce21b528ec21ae25d700ffa2",
+          "games/ascent/v0.6.2/transit.js": "f553380e5d6e83df463cd781374c87e4ca9a1046bca8737579131aefe0775d98",
+          "games/ascent/v0.6.2/trials.js": "4bb54ef489b36eeb408bddff4a95d46a385e9cc9edc62f1ed2d794160de166bd",
+          "games/ascent/v0.6.2/world.js": "53408ca26193f7941f646975c38ee2f7f8e55dbb157443c87c2f05e2bb34a0a2",
+          "games/ascent/v0.6.2/loot.css": "1819919b147cd37504763804ee946356d14c0d0c59deb0f2e1819cd1cf1f768f",
+          "games/ascent/v0.6.2/style.css": "a5f97f78bbda670be693f894aaf723fe242dcf8127e327389b8e23fb8ff8046e",
+          "games/ascent/v0.6.2/licenses/LICENSE_CODE_MIT.txt": "3ba543249fe88cd22862ade09aa55a2ecb562209067664fd05d31f723e71ba9d",
+          "games/ascent/v0.6.2/licenses/ASSET_LICENSES.md": "4954956dfb87d79470b1ce2eadb802d456a7807a91cb59d504b3aefae7144b15",
+          "covers/ascent/v0.6.2/ascent-v0.6.1.png": "d753abe569429e3402011187467277433eb0e7fc9d051ee567e4efe143f36aed"
         }
       }
     }

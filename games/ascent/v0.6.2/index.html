@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#0c1421"><title>ASCENT v0.6.2 · 战利品与搜集委托 / 本地试玩</title><link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?build=0.6.2"/><link rel="stylesheet" href="./loot.css?build=0.6.2"/></head>
+<body>
+<canvas id="world" aria-label="3D 战场"></canvas>
+<div id="vignette"></div>
+<header id="hud" class="hide">
+  <div class="hud-panel left"><div class="micro">ASCENT v0.6.2 // EXPEDITION 02 · <span id="levelNumber">LV 1</span></div><div class="rowtitle"><span>小队共享生命</span><b id="hpNumber">100/100</b></div><div class="meter"><div id="healthFill" class="hpfill"></div></div><div class="rowtitle"><span>小队</span><b id="squadSize">1 / 4</b></div><div id="squadPortraits" class="portraits"></div><div class="rowtitle"><span>击杀经验</span><b id="xpText">0 / 14</b></div><div class="meter slim"><div id="xpFill" class="xpfill"></div></div><div id="perkList"></div></div>
+  <div class="hud-panel center"><div class="micro">STATION WIDE THREAT</div><div id="clock">00:00</div><div id="threatRow"><span id="threatText">威胁 I</span><div id="threatBars" class="threat-bars"><i></i><i></i><i></i><i></i></div></div><div id="floorName">1F / 接驳大厅</div></div>
+  <div class="hud-panel right"><div class="micro">EXTRACTION WINDOWS / 4L—8L</div><div id="exitRows"></div><div id="budgetHint"></div><div class="micro separation">携带物资</div><div id="inventory">未取得物资</div><div class="micro separation">本次目标</div><div id="contractHUD" class="contract-hud" aria-live="polite"></div><div id="objectives">前三层无出口，先完成上行试炼</div></div>
+</header>
+<div class="level-rail hide" id="rail"><span>垂直研究塔</span><div id="railRows"></div></div>
+<div id="locationLabel" class="location-label hide"></div>
+<aside id="navigationHUD" class="navigation-hud hud-panel hide" aria-label="祭坛方向导航"></aside>
+<aside id="recruitCard" class="recruit-card hud-panel hide" aria-live="polite"></aside>
+<aside id="mapPanel" class="hud-panel hide"><button id="closeMap" class="hud-button map-close">收起地图 Esc</button><div class="micro">研究塔导览 · 当前楼层</div><canvas id="minimap" width="240" height="200" aria-label="楼层小地图"></canvas><div id="fogStatus" class="fog-status">小队视野 · 未知区域隐藏</div><div class="map-legend">亮：可见 灰：已探索 黑：未知<br>金环：上行 绿环：撤离 橙：不及<br>空心：未启 绿心：已激活 蓝：试炼 红×：关闭</div></aside>
+<div id="worldLabels" class="labels hide"></div>
+<div id="interact" class="interact hide"><div id="interactCaption"></div><div class="interact-track"><div id="interactProgress"></div></div></div>
+<div id="eventToast" class="toast"></div>
+<div id="bottom" class="bottom hide"><div id="hint">WASD 移动 · 右键拖动/←→ 视角 · E 交互 · F 切换目标 · Q 治疗</div><button id="mapButton" class="hud-button">地图 M</button><button id="bagButton" class="hud-button">背包 I / Tab</button><div id="medkits">补给 × 0</div><div id="saved">仓库 A: -- / B: --</div></div>
+<section id="inventoryPanel" class="inventory-panel hide" role="dialog" aria-modal="false" aria-labelledby="inventoryTitle">
+ <div class="inventory-shell">
+  <header class="inventory-heading"><div><div class="micro">EXPEDITION CARGO / 8 × 6</div><h2 id="inventoryTitle">战术背包</h2></div><div class="inventory-warning">整理时行动继续<br><span id="bagCapacity">0 / 48 格</span></div><button id="closeInventory" class="btn alt">关闭 Esc</button></header>
+  <div class="loot-columns">
+   <section class="loot-side"><div class="loot-side-heading"><h3 id="lootTitle">搜索容器</h3><span id="sourceCapacity"></span></div><div class="loot-board-scroll"><div id="lootGrid" class="bag-grid" data-side="source" aria-label="目标容器几何物品"></div></div><p id="lootList"></p><button id="lootAll" class="btn alt">一键拾取可容纳物品 →</button><ul id="lootResults" class="loot-results" aria-live="polite"></ul></section>
+   <section class="loot-side"><div class="loot-side-heading"><h3>玩家背包</h3><span>独立物品 · 不堆叠</span></div><div class="loot-board-scroll"><div id="bagGrid" class="bag-grid" data-side="bag" aria-label="8乘6几何背包"></div></div><div class="bag-actions"><button id="quickTransfer" class="btn alt">← 放回容器</button><button id="rotateItem" class="btn alt">旋转 R</button><button id="useItem" class="btn alt">使用 / 装备</button><button id="discardItem" class="btn alt">丢弃</button></div><p id="bagMessage" aria-live="polite"></p></section>
+  </div>
+  <div class="loot-footer"><div id="itemDetails" class="item-details">选择物品查看用途</div><aside><div class="inventory-help">双向拖拽 · 拖动中 R 旋转 · 方向键微调<br>右键 / Enter 快移单件 · 绿色可放 / 红色无效</div><div id="dropZone" class="drop-zone">拖到这里丢弃 · 丢弃物留在原地，可重新拾取</div><div id="cargoNotice"></div></aside></div>
+ </div>
+</section>
+<div id="modal" class="modal visible"><div id="modalCard" class="modal-card"></div></div>
+<script type="module" src="./main.js?build=0.6.2"></script>
+</body></html>
