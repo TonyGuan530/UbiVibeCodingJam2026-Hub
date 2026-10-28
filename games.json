@@ -4,18 +4,15 @@
     {
       "id": "ascent",
       "title": "ASCENT",
-      "subtitle": "上行撤离",
       "version": "v0.6.1",
-      "status": "试玩原型",
-      "updatedAt": "2026-10-28",
       "description": "深入八层封闭研究塔，搜索战利品、招募临时队员、通过上行试炼，在出口关闭前带着收获撤离。",
+      "updatedAt": "2026-10-28",
+      "subtitle": "上行撤离",
       "tags": [
         "3D 探索",
         "搜打撤",
         "键鼠"
       ],
-      "url": "./games/ascent/v0.6.1/index.html",
-      "cover": "./covers/ascent-v0.6.1.png",
       "controls": [
         {
           "key": "WASD",
@@ -53,7 +50,12 @@
           "key": "Esc",
           "action": "关闭面板或暂停"
         }
-      ]
+      ],
+      "status": "试玩原型",
+      "owner": "tonyguan530/squad-survivor-extraction",
+      "sourceCommit": "5f6b21607a72b0e8fbe23f86cc742962cdb41f48",
+      "url": "./games/ascent/v0.6.1/index.html",
+      "cover": "./covers/ascent-v0.6.1.png"
     }
   ]
 }
