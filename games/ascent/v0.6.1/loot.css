@@ -1,0 +1,54 @@
+/* Scoped Loot layout; world/HUD styles remain owned by style.css. */
+#inventoryPanel{padding:14px;background:#040d1799}
+#inventoryPanel .inventory-shell{width:min(1060px,100%);max-height:calc(100dvh - 28px);padding:16px;overscroll-behavior:contain}
+#inventoryPanel .inventory-heading{gap:12px;margin-bottom:12px}
+#inventoryPanel .inventory-heading h2{font-size:21px}
+.loot-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.loot-side{min-width:0}
+.loot-side-heading{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+.loot-side-heading h3{font-size:14px;margin:0;color:#d6eef6}
+.loot-side-heading span{font-size:10px;color:#9abacb;white-space:nowrap}
+.loot-board-scroll{max-height:340px;overflow:auto;overscroll-behavior:contain;border-radius:4px}
+#inventoryPanel .bag-grid{min-height:72px;overflow:hidden}
+#inventoryPanel .bag-grid.inactive{opacity:.3}
+#inventoryPanel #lootList{font-size:11px;color:#a9c3d5;line-height:1.5;min-height:18px;margin:8px 0 0}
+#inventoryPanel #lootAll{font-size:12px;padding:8px 11px;margin-top:7px}
+.loot-results{list-style:none;margin:8px 0 0;padding:0;max-height:82px;overflow:auto;font-size:11px;line-height:1.7}
+.loot-results [data-result=moved]{color:#96ebc0}
+.loot-results [data-result=remaining]{color:#f1ad9d}
+.loot-results small{font-size:10px;color:#9ab7ca}
+.loot-footer{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;border-top:1px solid #456174;margin-top:12px;padding-top:10px}
+#inventoryPanel .item-details{min-height:105px;font-size:11px}
+#inventoryPanel .item-details dl{grid-template-columns:40px 1fr;gap:3px;margin:6px 0 0}
+.item-uid{font-size:9px;overflow-wrap:anywhere;color:#94adbf}
+#inventoryPanel .inventory-help{margin:0;line-height:1.6;font-size:11px}
+#inventoryPanel .drop-zone{margin:8px 0;padding:8px;font-size:11px}
+#inventoryPanel #cargoNotice p{font-size:10px;line-height:1.5;color:#95afc1;margin:6px 0 0}
+#inventoryPanel #bagMessage{margin:7px 0 0;font-size:11px;min-height:16px}
+#inventoryPanel .bag-actions{gap:5px;margin-top:8px}
+#inventoryPanel .bag-actions .btn{padding:7px 8px;font-size:11px}
+#inventoryPanel .bag-item{font-size:11px;padding:4px}
+#inventoryPanel .bag-item small{font-size:9px}
+.bag-item.drag-origin{opacity:.34}
+.loot-placement{position:absolute;pointer-events:none;z-index:4;border:2px solid;box-sizing:border-box}
+.loot-placement.valid{background:#5ce4a44d;border-color:#8ff5c8}
+.loot-placement.invalid{background:#f95e5e55;border-color:#ff7d78}
+@media(max-width:800px){
+ #inventoryPanel{padding:8px}
+ #inventoryPanel .inventory-shell{padding:12px;max-height:calc(100dvh - 16px)}
+ .loot-columns,.loot-footer{gap:12px}
+ #inventoryPanel .inventory-heading h2{font-size:18px}
+ #inventoryPanel .inventory-heading .micro{font-size:8px}
+ #inventoryPanel .inventory-warning{font-size:10px}
+ #inventoryPanel .inventory-heading .btn{font-size:12px;padding:8px}
+ .loot-board-scroll{max-height:260px}
+ #inventoryPanel .bag-item{font-size:10px;padding:2px}
+ #inventoryPanel .bag-item small{font-size:8px}
+ .loot-side-heading{align-items:start;flex-direction:column;gap:3px}
+}
+@media(max-width:480px){
+ .loot-columns{gap:8px}
+ .loot-footer{grid-template-columns:1fr}
+ #inventoryPanel .bag-item small{display:none}
+ #inventoryPanel .inventory-warning{max-width:90px}
+}

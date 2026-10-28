@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b20">
+  <title>开始试玩 · UbiVibe Game Jam</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./hub.css?v=1">
+  <script src="./hub.js?v=1" defer></script>
+</head>
+<body data-page="play" class="play-page">
+  <header class="player-bar">
+    <a class="back-link" href="./"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6M8 12h12"/></svg>返回试玩室</a>
+    <div class="player-heading"><h1 id="playTitle">正在准备游戏</h1><span id="playVersion" class="version"></span></div>
+    <div class="player-actions"><a id="directLink" class="button button-quiet" hidden target="_blank" rel="noopener noreferrer">单独打开 <span aria-hidden="true">↗</span></a><button id="fullscreenButton" class="button button-accent" type="button" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>全屏试玩</button></div>
+  </header>
+  <main class="player-main">
+    <p id="loadStatus" class="player-status" role="status">正在载入游戏，请稍候…</p>
+    <div id="playerMount" class="player-mount"></div>
+    <section id="playGuide" class="play-guide" aria-label="游戏操作"></section>
+    <p class="mobile-note">推荐在电脑上使用键盘和鼠标试玩。全屏后按 Esc 返回。</p>
+  </main>
+  <noscript><p class="error-state">请启用 JavaScript，或返回试玩室。</p></noscript>
+</body>
+</html>

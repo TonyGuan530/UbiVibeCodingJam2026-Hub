@@ -1,0 +1,32 @@
+// Tiny dependency-free WebGL scene renderer; original code, MIT licensed with this demo.
+import {cameraPose,perspective} from './camera.js?build=0.6.1';
+const ident=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
+const sub=(a,b)=>a.map((v,i)=>v-b[i]);
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const norm=a=>{let len=Math.hypot(...a)||1;return a.map(x=>x/len)};
+function lookAt(eye,target,up=[0,1,0]){const f=norm(sub(target,eye)),s=norm(cross(f,up)),u=cross(s,f);return [s[0],u[0],-f[0],0,s[1],u[1],-f[1],0,s[2],u[2],-f[2],0,-dot(s,eye),-dot(u,eye),dot(f,eye),1]}
+function ortho(l,r,b,t,n,f){return [2/(r-l),0,0,0,0,2/(t-b),0,0,0,0,-2/(f-n),0,-(r+l)/(r-l),-(t+b)/(t-b),-(f+n)/(f-n),1]}
+function mul(a,b){const o=new Array(16).fill(0);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)o[c*4+r]+=a[k*4+r]*b[c*4+k];return o}
+function model(p,s,r){const c=Math.cos(r),v=Math.sin(r);return [c*s[0],0,-v*s[0],0,0,s[1],0,0,v*s[2],0,c*s[2],0,p[0],p[1],p[2],1]}
+function glCompile(gl,type,source){let s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s}
+function pushTri(arr,a,b,c){const n=norm(cross(sub(b,a),sub(c,a)));for(const v of [a,b,c])arr.push(...v,...n)}
+function geoCube(){let arr=[];const a=.5;let faces=[[[a,-a,-a],[a,a,-a],[a,a,a],[a,-a,a]],[[-a,-a,a],[-a,a,a],[-a,a,-a],[-a,-a,-a]],[[-a,a,-a],[-a,a,a],[a,a,a],[a,a,-a]],[[-a,-a,a],[-a,-a,-a],[a,-a,-a],[a,-a,a]],[[a,-a,a],[a,a,a],[-a,a,a],[-a,-a,a]],[[-a,-a,-a],[-a,a,-a],[a,a,-a],[a,-a,-a]]];for(const face of faces){pushTri(arr,face[0],face[1],face[2]);pushTri(arr,face[0],face[2],face[3])}return arr}
+function geoOct(){let a=[],v=[[0,.65,0],[.5,0,0],[0,0,.5],[-.5,0,0],[0,0,-.5],[0,-.65,0]];for(let i=1;i<=4;i++){const j=1+i%4;pushTri(a,v[0],v[j],v[i]);pushTri(a,v[5],v[i],v[j])}return a}
+function geoCone(n=7){let a=[];for(let i=0;i<n;i++){let t=i*2*Math.PI/n,u=(i+1)*2*Math.PI/n,p=[Math.cos(t)*.5,-.5,Math.sin(t)*.5],q=[Math.cos(u)*.5,-.5,Math.sin(u)*.5];pushTri(a,[0,.5,0],q,p);pushTri(a,[0,-.5,0],p,q)}return a}
+function geoCylinder(n=10){let a=[];for(let i=0;i<n;i++){let t=i*2*Math.PI/n,u=(i+1)*2*Math.PI/n,bl=[Math.cos(t)*.5,-.5,Math.sin(t)*.5],br=[Math.cos(u)*.5,-.5,Math.sin(u)*.5],tl=[bl[0],.5,bl[2]],tr=[br[0],.5,br[2]];pushTri(a,bl,tl,tr);pushTri(a,bl,tr,br);pushTri(a,[0,.5,0],tr,tl);pushTri(a,[0,-.5,0],bl,br)}return a}
+function parseColor(c){if(Array.isArray(c))return c;let n=parseInt(c.slice(1),16);return [(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]}
+export class Renderer{
+ constructor(canvas){this.canvas=canvas;const gl=canvas.getContext('webgl',{antialias:true,alpha:false,premultipliedAlpha:false});if(!gl)throw Error('WebGL 不可用');this.gl=gl;
+ const vs=`attribute vec3 aPos;attribute vec3 aNormal;uniform mat4 uProjection;uniform mat4 uModel;varying vec3 vNormal;varying float vHeight;void main(){vec4 world=uModel*vec4(aPos,1.);vNormal=mat3(uModel)*aNormal;vHeight=world.y;gl_Position=uProjection*world;}`;
+ const fs=`precision mediump float;varying vec3 vNormal;varying float vHeight;uniform vec3 uColor;uniform float uAlpha;void main(){float light=dot(normalize(vNormal),normalize(vec3(-.38,.86,.42)));float diffuse=.58+max(-.18,light)*.42;float cool=clamp((vHeight-7.)/15.,0.,.25);gl_FragColor=vec4(uColor*diffuse+vec3(.015,.026,.05)+cool*.09,uAlpha);}`;
+ let prog=gl.createProgram();gl.attachShader(prog,glCompile(gl,gl.VERTEX_SHADER,vs));gl.attachShader(prog,glCompile(gl,gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));this.program=prog;gl.useProgram(prog);
+ this.loc={aPos:gl.getAttribLocation(prog,'aPos'),aNormal:gl.getAttribLocation(prog,'aNormal'),proj:gl.getUniformLocation(prog,'uProjection'),model:gl.getUniformLocation(prog,'uModel'),color:gl.getUniformLocation(prog,'uColor'),alpha:gl.getUniformLocation(prog,'uAlpha')};
+ this.meshes={};for(let [name,verts] of Object.entries({box:geoCube(),oct:geoOct(),cone:geoCone(),cyl:geoCylinder()})){const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(verts),gl.STATIC_DRAW);this.meshes[name]={buffer:b,count:verts.length/6}}
+ // Two-sided fallback geometry: no missing facets on hand-built meshes.
+ this.colorCache=new Map();this.projection=ident;gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.disable(gl.CULL_FACE);gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA)}
+ resize(){let d=Math.min(devicePixelRatio||1,1.6),w=Math.max(1,Math.round(innerWidth*d)),h=Math.max(1,Math.round(innerHeight*d));if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h}this.gl.viewport(0,0,w,h)}
+ frame(p,fc,options=null){this.resize();let gl=this.gl;gl.depthMask(true);gl.clearColor(.038,.067,.110,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);const aspect=this.canvas.width/this.canvas.height;let eye,t,projection;if(options?.mode==='follow'){const camera=cameraPose({x:p[0],z:p[2]},p[1],options.yaw,options.pitch,options.distance,options.blocked);eye=camera.eye;t=camera.pivot;this.cameraDistance=camera.distance;projection=perspective(Math.PI/3,aspect,.08,110)}else{t=[p[0]*.20,fc*6.6,p[2]*.19];eye=[t[0]+27,t[1]+34,t[2]+29];projection=ortho(-19.4*aspect,19.4*aspect,-19.4,19.4,.1,160)}this.cameraTarget=t;this.eye=eye;this.projection=mul(projection,lookAt(eye,t));gl.useProgram(this.program);gl.uniformMatrix4fv(this.loc.proj,false,new Float32Array(this.projection));this.calls=0}
+ draw(shape,p,s,c,r=0,alpha=1){let gl=this.gl,m=this.meshes[shape]||this.meshes.box;if(alpha<.02)return;gl.depthMask(alpha>.8);gl.bindBuffer(gl.ARRAY_BUFFER,m.buffer);gl.vertexAttribPointer(this.loc.aPos,3,gl.FLOAT,false,24,0);gl.vertexAttribPointer(this.loc.aNormal,3,gl.FLOAT,false,24,12);gl.enableVertexAttribArray(this.loc.aPos);gl.enableVertexAttribArray(this.loc.aNormal);gl.uniformMatrix4fv(this.loc.model,false,new Float32Array(model(p,s,r)));if(!this.colorCache.has(c))this.colorCache.set(c,parseColor(c));gl.uniform3fv(this.loc.color,this.colorCache.get(c));gl.uniform1f(this.loc.alpha,alpha);gl.drawArrays(gl.TRIANGLES,0,m.count);this.calls++}
+ point(p){let a=this.projection,v=[p[0],p[1],p[2],1],x=a[0]*v[0]+a[4]*v[1]+a[8]*v[2]+a[12],y=a[1]*v[0]+a[5]*v[1]+a[9]*v[2]+a[13],w=a[3]*v[0]+a[7]*v[1]+a[11]*v[2]+a[15];if(w<=.03)return[-9999,-9999];return [(x/w*.5+.5)*innerWidth,(-y/w*.5+.5)*innerHeight]}
+}
