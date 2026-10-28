@@ -56,6 +56,47 @@
       "sourceCommit": "c2b50f7e147aec712a5df52f72afd49b3a2d6089",
       "url": "./games/ascent/v0.6.2/index.html",
       "cover": "./covers/ascent/v0.6.2/ascent-v0.6.1.png"
+    },
+    {
+      "id": "tonyguan530-tube-loop-patrol",
+      "title": "环路巡防（废稿）",
+      "version": "v0.1.0-archived",
+      "description": "废稿：此版本仅供回顾，玩法概念将重构。沿管道巡防三圈、提前布置炮台保护核心。",
+      "updatedAt": "2026-10-28",
+      "subtitle": "概念重构中 · 历史试玩版本",
+      "tags": [
+        "废稿",
+        "概念重构中",
+        "Godot",
+        "键鼠"
+      ],
+      "controls": [
+        {
+          "key": "Enter",
+          "action": "开始"
+        },
+        {
+          "key": "W / S",
+          "action": "调速"
+        },
+        {
+          "key": "A / D",
+          "action": "沿壁移动"
+        },
+        {
+          "key": "Q",
+          "action": "慢动作建造"
+        },
+        {
+          "key": "Space / Shift",
+          "action": "跳跃 / 冲刺"
+        }
+      ],
+      "status": "试玩原型",
+      "owner": "tonyguan530/tube-loop-patrol",
+      "sourceCommit": "1a4e88ea8f080c1dee04f76fa7a9f12ad7173fad",
+      "url": "./games/tonyguan530-tube-loop-patrol/v0.1.0-archived/index.html",
+      "cover": "./covers/tonyguan530-tube-loop-patrol/v0.1.0-archived/cover.png"
     }
   ]
 }
